@@ -5,7 +5,7 @@ import type { UserRequestDto, UserResponseDto, BookDto } from "./types";
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const userApi = axios.create({
-  baseURL: `${API_BASE_URL}/users`,
+  baseURL: `/users`,
   headers: {
     "Content-Type": "application/json",
   },
