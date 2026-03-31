@@ -12,14 +12,14 @@ const userApi = axios.create({
 });
 
 const bookApi = axios.create({
-  baseURL: `${API_BASE_URL}/books`,
+  baseURL: `/books`,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
 const mediaApi = axios.create({
-  baseURL: `${API_BASE_URL}/media`,
+  baseURL: `/media`,
 });
 
 // User Service API
