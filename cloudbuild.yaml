@@ -1,0 +1,18 @@
+steps:
+  # This step uses the Google Cloud Buildpack to build your Next.js app
+  - name: 'gcr.io/k8s-skaffold/pack'
+    entrypoint: 'pack'
+    args:
+      - 'build'
+      - '$_AR_HOSTNAME/$_AR_PROJECT_ID/$_AR_REPOSITORY/$_SERVICE_NAME:$COMMIT_SHA'
+      - '--builder=gcr.io/buildpacks/builder:v1'
+      - '--network=cloudbuild'
+    
+
+# THIS IS THE FIX: It tells Google to use a massive machine for the build
+options:
+  machineType: 'E2_HIGHCPU_8'
+  logging: CLOUD_LOGGING_ONLY
+
+images:
+  - '$_AR_HOSTNAME/$_AR_PROJECT_ID/$_AR_REPOSITORY/$_SERVICE_NAME:$COMMIT_SHA'
